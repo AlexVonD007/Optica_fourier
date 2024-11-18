@@ -55,7 +55,7 @@ def simulate_shack_hartmann(input_plane, wavelength, focal_length, lens_array_sh
                     # Mark the centroid on the output image
                     if 0 <= int(i * pixels_per_lens_y + centroid[0]) < output_image.shape[0] and 0 <= int(j * pixels_per_lens_x + centroid[1]) < output_image.shape[1]:
                         output_image[int(i * pixels_per_lens_y + centroid[0]), int(j * pixels_per_lens_x + centroid[1])] = 1
-                        centroid_position[i,j]=[int(i * pixels_per_lens_y + centroid[0]), int(j * pixels_per_lens_x + centroid[1])]
+                        centroid_position[i,j]=[i * pixels_per_lens_y + centroid[0], j * pixels_per_lens_x + centroid[1]]
     
     return output_image, centroid_position
 
