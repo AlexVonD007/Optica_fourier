@@ -53,7 +53,7 @@ non_zero_values_2=centroid2[centroid2 != 0]
 
 
 
-lb = [0.9, 1e-3, 1e-9]  # Límite inferior para [n, thicknes, focal]
+lb = [0.9, 1e-3, -52]  # Límite inferior para [n, thicknes, focal]
 ub = [5, 10, 52]  # Límite superior para [n, thicknes, focal]
 
 # Ejecutar el algoritmo PSO
