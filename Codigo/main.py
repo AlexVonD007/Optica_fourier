@@ -29,7 +29,7 @@ shperical_wave=spherical_wavefront(shape, wavelength)
 cilindrical_wave=cilindrical_wavefront(shape, wavelength)
 
 ## Generacion de las aberraciones
-aberration=zernike(40, 0, cilindrical_wave)
+aberration=zernike(40,0, cilindrical_wave)
 
 Z=aberrated_wavefront(aberration[0], plane_wave)
 
@@ -71,26 +71,28 @@ output_image3, centroid3= simulate_shack_hartmann(new_field, wavelength, focal_l
 
 plt.figure(figsize=(60, 60))
 
-plt.subplot(1, 3, 1)
+plt.subplot(2, 2, 1)
 show(intensity(output_image2) + grid, 'Frente de onda de entrada')
 for i in range(centroid2.shape[0]):
     for j in range(centroid2.shape[1]):
         plt.plot(centroid2[i, j, 1], centroid2[i, j, 0], 'ro')
 
-plt.subplot(1, 3, 2)
+plt.subplot(2, 2, 2)
 show(intensity(output_image) + grid, 'Frente de onda aberrado')
 for i in range(centroid.shape[0]):
     for j in range(centroid.shape[1]):
         plt.plot(centroid[i, j, 1], centroid[i, j, 0], 'ro')
 
-plt.subplot(1,3,3)
+plt.subplot(2,2,3)
 show(intensity(output_image3) + grid, 'Frente de onda con elemento corrector')
 for i in range(centroid3.shape[0]):
     for j in range(centroid3.shape[1]):
         plt.plot(centroid3[i, j, 1], centroid3[i, j, 0], 'ro')
-# plt.pcolormesh(X, Y, mag(Z), shading='auto', cmap='turbo_r')
-# plt.colorbar(label='Intensidad')
-# plt.title('Aberración')
-# plt.xlabel('X')
-# plt.ylabel('Y')
+
+plt.subplot(2,2,4)
+plt.pcolormesh(X, Y, intensity(Z), shading='auto', cmap='turbo_r')
+plt.colorbar(label='Intensidad')
+plt.title('Aberración')
+plt.xlabel('X')
+plt.ylabel('Y')
 plt.show()
